@@ -51,7 +51,7 @@ int main()
 
     std::cout << "#ifndef: Проверява дали даден макрос не е дефиниран." << std::endl;
 
-    std::cout << "#else: Алтернатива за #if." << std::endl;
+    std::cout << "#else: Алтернатива за if." << std::endl;
 
     std::cout << "#elif: Съкращение за else if." << std::endl;
 
