@@ -5,6 +5,7 @@ int main()
 {
 	// Допълнение 1: Използвам SetConsoleOutputCP(CP_UTF8), за да може кирилицата да се принтира правилно в конзолата.
 	// Допълнение 2: Използвам std::cout << std::endl, за да добавя нов ред след всяко принтиране на текст в конзолата, за по-добра четимост.
+	// Допълнение 3: При проблем с компилирането, се премахват редове номер 2 и 10.
 
     SetConsoleOutputCP(CP_UTF8);
 
@@ -20,7 +21,7 @@ int main()
     std::cout << std::endl;
 
     // Задача 3
-    std::cout << "C++ служебни думи:" << std::endl;
+    std::cout << "Ключови думи в C++:" << std::endl;
     std::cout << "auto, double, break, else, case, enum, char, extern, const, float, continue, for, default, goto, do, if, int, long, register, return, short, signed, sizeof, static, struct, switch, typedef, union, unsigned, void, volatile, while, asm, bool, catch, class, const_cast, delete, dynamic_cast, explicit, false, friend, inline, mutable, namespace, new, operator, private, protected, public, reinterpret_cast, static_cast, template, this, throw, true, try, typeid, typename, using, virtual, wchar_t" << std::endl;
 
     std::cout << std::endl;
@@ -28,7 +29,7 @@ int main()
     // Задача 4
     std::cout << "Определения:" << std::endl;
 
-    std::cout << "Лексема: Най-малката част от синтаксиса на езика, като ключови думи, оператори и идентификатори." << std::endl;
+    std::cout << "Лексема: Най-малката част от синтаксиса на езика, като ключови думи, оператори и идентификатори или константи, която компилаторът разпознава." << std::endl;
 
     std::cout << "Литерал: Конкретна стойност в кода, като число, символ или стринг." << std::endl;
 
@@ -43,7 +44,7 @@ int main()
 
     std::cout << "#undef: Премахва дефиниция на макрос." << std::endl;
 
-    std::cout << "#include: Включва съдържанието на друг файл в текущия код. Използва се за добавяне на библиотеки или други файлове." << std::endl;
+    std::cout << "#include: Включва съдържанието на друг файл в кода. Използва се за добавяне на библиотеки или други файлове." << std::endl;
 
     std::cout << "#if: Проверява условие по време на компилация." << std::endl;
 
