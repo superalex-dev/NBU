@@ -1,2 +1,2 @@
 # NBU
-C++ nbu lectures
+C++ nbu lectures, exercises and homeworks
