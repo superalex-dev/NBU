@@ -1,10 +1,13 @@
+// Важно! Откоментирайте задачата, която искате да се извика и съответно изпълни в main метода.
+// Например ако искате да изпълните задача 3, закоментирайте всички останали задачи, освен 3-тата.
+
 #include <iostream>
 #include <cstdlib>
 
 using namespace std;
 
 #define MIN 1.0
-#define MAX 25.0 
+#define MAX 25.0
 
 int task1()
 {
@@ -19,138 +22,123 @@ int task1()
         return 1;
     }
 
-    if (n >= 1000)
+    switch (n / 1000)
     {
-        if (n >= 3000)
-        {
+        case 3:
             cout << "MMM";
-        }
-        else if (n >= 2000)
-        {
+            break;
+        case 2:
             cout << "MM";
-        }
-        else
-        {
+            break;
+        case 1:
             cout << "M";
-        }
+            break;
+        default:
+            break;
     }
 
-    if (n >= 100)
+    n %= 1000;
+
+    switch (n / 100)
     {
-        if (n >= 900)
-        {
+        case 9:
             cout << "CM";
-        }
-        else if (n >= 800)
-        {
+            break;
+        case 8:
             cout << "DCCC";
-        }
-        else if (n >= 700)
-        {
+            break;
+        case 7:
             cout << "DCC";
-        }
-        else if (n >= 600)
-        {
+            break;
+        case 6: 
             cout << "DC";
-        }
-        else if (n >= 500)
-        {
+            break;
+        case 5: 
             cout << "D";
-        }
-        else if (n >= 400)
-        {
+            break;
+        case 4: 
             cout << "CD";
-        }
-        else if (n >= 300)
-        {
+            break;
+        case 3: 
             cout << "CCC";
-        }
-        else if (n >= 200)
-        {
+            break;
+        case 2: 
             cout << "CC";
-        }
-        else
-        {
-            cout << "C";
-        }
+            break;
+        case 1: 
+            cout << "C"; break;
+        default:
+            break;
     }
 
-    if (n >= 10)
+    n %= 100;
+    
+    switch (n / 10)
     {
-        if (n >= 90)
-        {
+        case 9: 
             cout << "XC";
-        }
-        else if (n >= 80)
-        {
+            break;
+        case 8: 
             cout << "LXXX";
-        }
-        else if (n >= 70)
-        {
+            break;
+        case 7: 
             cout << "LXX";
-        }
-        else if (n >= 60)
-        {
+            break;
+        case 6: 
             cout << "LX";
-        }
-        else if (n >= 50)
-        {
+            break;
+        case 5: 
             cout << "L";
-        }
-        else if (n >= 40)
-        {
+            break;
+        case 4: 
             cout << "XL";
-        }
-        else if (n >= 30)
-        {
+            break;
+        case 3: 
             cout << "XXX";
-        }
-        else if (n >= 20)
-        {
+            break;
+        case 2: 
             cout << "XX";
-        }
-
-        n %= 10;
+            break;
+        case 1: 
+            cout << "X";
+            break;
+        default:
+            break;
     }
 
-    if (n >= 1)
+    n %= 10;
+
+    switch (n)
     {
-        if (n == 9)
-        {
+        case 9: 
             cout << "IX";
-        }
-        else if (n == 8)
-        {
+            break;
+        case 8: 
             cout << "VIII";
-        }
-        else if (n == 7)
-        {
+            break;
+        case 7: 
             cout << "VII";
-        }
-        else if (n == 6)
-        {
+            break;
+        case 6: 
             cout << "VI";
-        }
-        else if (n == 5)
-        {
+            break;
+        case 5: 
             cout << "V";
-        }
-        else if (n == 4)
-        {
+            break;
+        case 4: 
             cout << "IV";
-        }
-        else if (n == 3)
-        {
+            break;
+        case 3: 
             cout << "III";
-        }
-        else if (n == 2)
-        {
+            break;
+        case 2: 
             cout << "II";
-        }
-        else
-        {
+            break;
+        case 1: 
             cout << "I";
-        }
+            break;
+        default:
+            break;
     }
 
     cout << endl;
@@ -166,107 +154,128 @@ int task2()
     cin >> romanNumber;
 
     int index = 0;
-    
-    if (romanNumber[index] == 'M') {
+
+    if (romanNumber[index] == 'M')
+    {
         decimalNumber += 1000;
         index++;
     }
-    
-    if (romanNumber[index] == 'M') {
+
+    if (romanNumber[index] == 'M')
+    {
         decimalNumber += 1000;
         index++;
     }
-    
-    if (romanNumber[index] == 'M') {
+
+    if (romanNumber[index] == 'M')
+    {
         decimalNumber += 1000;
         index++;
     }
-    
-    if (romanNumber[index] == 'C' && romanNumber[index + 1] == 'M') {
+
+    if (romanNumber[index] == 'C' && romanNumber[index + 1] == 'M')
+    {
         decimalNumber += 900;
         index += 2;
     }
-    
-    if (romanNumber[index] == 'D') {
+
+    if (romanNumber[index] == 'D')
+    {
         decimalNumber += 500;
         index++;
     }
-    
-    if (romanNumber[index] == 'C' && romanNumber[index + 1] == 'D') {
+
+    if (romanNumber[index] == 'C' && romanNumber[index + 1] == 'D')
+    {
         decimalNumber += 400;
         index += 2;
     }
-    
-    if (romanNumber[index] == 'C') {
+
+    if (romanNumber[index] == 'C')
+    {
         decimalNumber += 100;
         index++;
     }
-    
-    if (romanNumber[index] == 'C') {
+
+    if (romanNumber[index] == 'C')
+    {
         decimalNumber += 100;
         index++;
     }
-    
-    if (romanNumber[index] == 'C') {
+
+    if (romanNumber[index] == 'C')
+    {
         decimalNumber += 100;
         index++;
     }
-    
-    if (romanNumber[index] == 'X' && romanNumber[index + 1] == 'C') {
+
+    if (romanNumber[index] == 'X' && romanNumber[index + 1] == 'C')
+    {
         decimalNumber += 90;
         index += 2;
     }
-    
-    if (romanNumber[index] == 'L') {
+
+    if (romanNumber[index] == 'L')
+    {
         decimalNumber += 50;
         index++;
     }
-    
-    if (romanNumber[index] == 'X' && romanNumber[index + 1] == 'L') {
+
+    if (romanNumber[index] == 'X' && romanNumber[index + 1] == 'L')
+    {
         decimalNumber += 40;
         index += 2;
     }
-    
-    if (romanNumber[index] == 'X') {
+
+    if (romanNumber[index] == 'X')
+    {
         decimalNumber += 10;
         index++;
     }
-    
-    if (romanNumber[index] == 'X') {
+
+    if (romanNumber[index] == 'X')
+    {
         decimalNumber += 10;
         index++;
     }
-    
-    if (romanNumber[index] == 'X') {
+
+    if (romanNumber[index] == 'X')
+    {
         decimalNumber += 10;
         index++;
     }
-    
-    if (romanNumber[index] == 'I' && romanNumber[index + 1] == 'X') {
+
+    if (romanNumber[index] == 'I' && romanNumber[index + 1] == 'X')
+    {
         decimalNumber += 9;
         index += 2;
     }
-    
-    if (romanNumber[index] == 'V') {
+
+    if (romanNumber[index] == 'V')
+    {
         decimalNumber += 5;
         index++;
     }
-    
-    if (romanNumber[index] == 'I' && romanNumber[index + 1] == 'V') {
+
+    if (romanNumber[index] == 'I' && romanNumber[index + 1] == 'V')
+    {
         decimalNumber += 4;
         index += 2;
     }
-    if (romanNumber[index] == 'I') {
+    if (romanNumber[index] == 'I')
+    {
         decimalNumber += 1;
         index++;
     }
-    
-    if (romanNumber[index] == 'I') {
+
+    if (romanNumber[index] == 'I')
+    {
         decimalNumber += 1;
         index++;
     }
-    
-    if (romanNumber[index] == 'I') {
+
+    if (romanNumber[index] == 'I')
+    {
         decimalNumber += 1;
         index++;
     }
@@ -300,7 +309,8 @@ int task4()
     cout << "Enter a integer: ";
     cin >> number;
 
-    if (number < 0) {
+    if (number < 0)
+    {
         cout << "-";
         number = -number;
     }
@@ -309,7 +319,7 @@ int task4()
     {
         cout << (number / 10000) % 10 << endl;
     }
-    
+
     if (number >= 1000)
     {
         cout << (number / 1000) % 10 << endl;
@@ -322,7 +332,7 @@ int task4()
     {
         cout << (number / 10) % 10 << endl;
     }
-    
+
     cout << number % 10 << endl;
 
     return 0;
@@ -332,10 +342,10 @@ int task5()
 {
     int min;
     int max;
-    
+
     cout << "Enter min number: ";
     cin >> min;
-    
+
     cout << "Enter max number: ";
     cin >> max;
 
@@ -355,12 +365,12 @@ int task5()
         {
             cout << randomNumber / 100 << endl;
         }
-        
+
         if (randomNumber >= 10)
         {
             cout << (randomNumber / 10) % 10 << endl;
         }
-        
+
         cout << randomNumber % 10 << endl;
     }
     else
@@ -378,6 +388,7 @@ int task6()
 
     cout << "Enter a min float: ";
     cin >> min;
+    
     cout << "Enter a max float: ";
     cin >> max;
 
@@ -407,14 +418,13 @@ int task7()
 
     if (d == 0)
     {
-        cout << "The system has no solution or have infinity solutions" << endl;
+        cout << "The system has no solution or have infinitely many solutions" << endl;
     }
     else
     {
         double x = (c1 * b2 - c2 * b1) / d;
         double y = (a1 * c2 - a2 * c1) / d;
 
-        cout << "The system has a solution" << endl;
         cout << "x = " << x << " y = " << y << endl;
     }
 
@@ -438,18 +448,18 @@ int task8()
 
     cout << "Enter (a1, b1, c1, d1): ";
     cin >> a1 >> b1 >> c1 >> d1;
-    
+
     cout << "Enter (a2, b2, c2, d2): ";
     cin >> a2 >> b2 >> c2 >> d2;
-    
+
     cout << "enter (a3, b3, c3, d3): ";
     cin >> a3 >> b3 >> c3 >> d3;
 
     double d = a1 * (b2 * c3 - b3 * c2) - b1 * (a2 * c3 - a3 * c2) + c1 * (a2 * b3 - a3 * b2);
-    
+
     if (d == 0)
     {
-        cout << "The system doesnt have solution or it has infinity solutions." << endl;
+        cout << "The system doesnt have solution or it has infinitely many solutions." << endl;
     }
     else
     {
@@ -463,8 +473,7 @@ int task8()
         double y = dy / d;
         double z = dz / d;
 
-        cout << "The solution is:" << endl;
-        
+
         cout << "x = " << x << endl;
         cout << "y = " << y << endl;
         cout << "z = " << z << endl;
@@ -473,14 +482,189 @@ int task8()
     return 0;
 }
 
+int task9()
+{
+    double a;
+    double b;
+    int n;
+
+    cout << "Enter A and B: ";
+    cin >> a >> b;
+
+    cout << "Select and enter a one of the following operations: 1 - addition, 2 - subtraction, 3 - multiplication, 4 - division: "; cin >> n;
+
+    if (n < 1 || n > 4)
+    {
+        cout << "The number is not one of the possible operations" << endl;
+        return 1;
+    }
+
+    if (n == 4 && b == 0)
+    {
+        cout << "division by 0 is impossible" << endl;
+        return 1;
+    }
+
+    switch (n)
+    {
+        case 1:
+            cout << "addition: " << a + b << endl;
+            break;
+        case 2:
+            cout << "subtraction: " << a - b << endl;
+            break;
+        case 3:
+            cout << "multiplication: " << b * b << endl;
+            break;
+        case 4:
+            cout << "division: " << a / b << endl;
+            break;
+        default:
+            cout << "Invalid operation" << endl;
+            break;
+    }
+
+    return 0;
+}
+
+int task10()
+{
+    int x1;
+    cout << "Enter a number between 10 and 40: ";
+    
+    cin >> x1;
+
+    if (x1 < 10 || x1 > 40)
+    {
+        cout << "Invalid input, enter a number between 10 and 40" << endl;
+        return 1;
+    }
+
+    string result;
+
+    if (x1 >= 10 && x1 <= 19)
+    {
+        switch (x1)
+        {
+            case 10:
+                result = "Ten";
+                break;
+            case 11:
+                result = "Eleven";
+                break;
+            case 12:
+                result = "Twelve";
+                break;
+            case 13:
+                result = "Thirteen";
+                break;
+            case 14:
+                result = "Fourteen";
+                break;
+            case 15:
+                result = "Fifteen";
+                break;
+            case 16:
+                result = "Sixteen";
+                break;
+            case 17:
+                result = "Seventeen";
+                break;
+            case 18:
+                result = "Eighteen";
+                break;
+            case 19:
+                result = "Nineteen";
+                break;
+            default:
+                break;
+        }
+
+        result += " educational tasks";
+    }
+    else
+    {
+        int tens = x1 / 10;
+        int units = x1 % 10;
+
+        switch (tens)
+        {
+            case 2:
+                result = "Twenty";
+                break;
+            case 3:
+                result = "Thirty";
+                break;
+            case 4:
+                result = "Forty";
+                break;
+            default:
+                break;
+        }
+
+        if (units != 0)
+        {
+            result += " and ";
+
+            switch (units)
+            {
+                case 1:
+                    result += "one";
+                    break;
+                case 2:
+                    result += "two";
+                    break;
+                case 3:
+                    result += "three";
+                    break;
+                case 4:
+                    result += "four";
+                    break;
+                case 5:
+                    result += "five";
+                    break;
+                case 6:
+                    result += "six";
+                    break;
+                case 7:
+                    result += "seven";
+                    break;
+                case 8:
+                    result += "eight";
+                    break;
+                case 9:
+                    result += "nine";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        if (units == 1)
+        {
+            result += " educational task";
+        }
+        else
+        {
+            result += " educational tasks";
+        }
+    }
+
+    cout << result << endl;
+
+    return 0;
+}
+
 int main()
 {
-    //task1();
+    task1();
     //task2();
     //task3();
     //task4();
     //task5();
     //task6();
-    //task7(); //not done
-    //task8(); //also not done
+    //task7();
+    //task8();
+    //task9();
+    //task10();
 }
