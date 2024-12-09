@@ -100,17 +100,17 @@ int task3()
     {
         if (n % i == 0)
         {
-            bool isPrime = true;
+            bool prime = true;
             
             for (int j = 2; j <= sqrt(i); j++)
             {
                 if (i % j == 0)
                 {
-                    isPrime = false;
+                    prime = false;
                     break;
                 }
             }
-            if (!isPrime)
+            if (!prime)
             {
                 result += i;
             }
