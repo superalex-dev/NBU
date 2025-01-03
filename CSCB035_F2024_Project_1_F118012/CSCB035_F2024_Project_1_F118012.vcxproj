@@ -130,7 +130,7 @@
     <ClCompile Include="CSCB035_F2024_Project_1_F118012.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PerfectNumbers.h" />
+    <ClInclude Include="Functions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
