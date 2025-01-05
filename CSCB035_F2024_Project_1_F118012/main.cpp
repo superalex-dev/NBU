@@ -87,7 +87,7 @@ int main()
 
     cout << endl;
 
-    cout << "Invalid inputs:" << endl;
+    cout << "Test with invalid inputs:" << endl;
 
     cout << "Sum of divisors of -1: " << sumOfDivisors(-1) << endl;
 
