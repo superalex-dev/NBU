@@ -186,11 +186,11 @@ void displayFirstNPerfectNumbers(int n)
 
     while (count < n)
     {
-        long long mersennePrime = (1LL << p) - 1; // 2^p - 1
+        long long mersennePrime = (1LL << p) - 1;
 
         if (isPrime(mersennePrime))
         {
-            long long perfectNumber = (1LL << (p - 1)) * mersennePrime; // 2^(p-1) * (2^p - 1)
+            long long perfectNumber = (1LL << (p - 1)) * mersennePrime;
             cout << perfectNumber << " ";
             count++;
         }
@@ -251,11 +251,11 @@ void storeFirstNPerfectNumbers(int n, int* result, int& size)
 
     while (count < n)
     {
-        long long mersennePrime = (1LL << p) - 1; // 2^p - 1
+        long long mersennePrime = (1LL << p) - 1;
 
         if (isPrime(mersennePrime))
         {
-            long long perfectNumber = (1LL << (p - 1)) * mersennePrime; // 2^(p-1) * (2^p - 1)
+            long long perfectNumber = (1LL << (p - 1)) * mersennePrime;
             result[size++] = perfectNumber;
             count++;
         }
@@ -284,7 +284,7 @@ void storePerfectNumberRepresentations(int n, string* result)
 
     while (count < n)
     {
-        long long mersennePrime = (1LL << p) - 1; // 2^p - 1
+        long long mersennePrime = (1LL << p) - 1;
 
         if (isPrime(mersennePrime))
         {
