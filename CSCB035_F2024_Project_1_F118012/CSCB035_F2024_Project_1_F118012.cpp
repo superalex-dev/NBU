@@ -79,7 +79,7 @@ void intersectionOfDivisors(int a, int b, int* result, int& size)
         return;
     }
 
-    if (!result)
+    if (result == nullptr)
     {
         cout << "Output array is null. Cannot proceed." << endl;
         size = 0;
