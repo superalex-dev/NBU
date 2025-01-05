@@ -1,121 +1,186 @@
-#include <iostream>
+#include "Functions.h"
 #include <cmath>
-#include <string>
+#include <cstring>
 
 using namespace std;
 
-bool isPrime(long long number) {
-    if (number < 2) return false;
-    for (long long i = 2; i <= sqrt(number); ++i) {
-        if (number % i == 0) return false;
-    }
-    return true;
-}
-
-long long sumOfDivisors(long long number) {
-    long long sum = 1;
-    for (long long i = 2; i <= sqrt(number); ++i) {
-        if (number % i == 0) {
+int sumOfDivisors(int n)
+{
+    int sum = 0;
+    for (int i = 1; i <= n / 2; i++)
+    {
+        if (n % i == 0) {
             sum += i;
-            if (i != number / i) {
-                sum += number / i;
-            }
         }
     }
     return sum;
 }
 
-void printDivisors(long long number) {
-    cout << "Divisors of " << number << ": 1";
-    for (long long i = 2; i <= sqrt(number); ++i) {
-        if (number % i == 0) {
-            cout << ", " << i;
-            if (i != number / i) {
-                cout << ", " << number / i;
-            }
+void displayDivisors(int n)
+{
+    for (int i = 1; i <= n / 2; i++)
+    {
+        if (n % i == 0)
+        {
+            cout << i << " ";
         }
     }
     cout << endl;
 }
 
-bool isPerfectNumber(long long number) {
-    return sumOfDivisors(number) == number;
-}
+bool isPrime(int n) 
+{
+    if (n <= 1)
+    {
+        return false;
+    }
 
-int getPerfectNumbersInRange(long long start, long long end, long long* result, int maxSize) {
-    int count = 0;
-    for (long long num = start; num <= end && count < maxSize; ++num) {
-        if (isPerfectNumber(num)) {
-            result[count++] = num;
+    if (n <= 3)
+    {
+        return true;
+    }
+
+    if (n % 2 == 0 || n % 3 == 0)
+    {
+        return false;
+    }
+
+    for (int i = 5; i * i <= n; i += 6) 
+    {
+        if (n % i == 0 || n % (i + 2) == 0)
+        {
+            return false;
         }
     }
-    return count;
+    return true;
 }
 
-int getFirstNPerfectNumbers(int n, long long* result, int maxSize) {
-    int count = 0;
-    int p = 2;
-    while (count < n && count < maxSize) {
-        if (isPrime((1LL << p) - 1)) {
-            result[count++] = (1LL << (p - 1)) * ((1LL << p) - 1);
+void intersectionOfDivisors(int a, int b, int* result, int& size)
+{
+    size = 0;
+    for (int i = 1; i <= min(a, b) / 2; i++) 
+    {
+        if (a % i == 0 && b % i == 0) 
+        {
+            result[size++] = i;
         }
-        ++p;
     }
-    return count;
 }
 
-int getPerfectNumbersRepresentation(int n, string result[], int maxSize) {
+void unionOfPrimeDivisors(int a, int b, int* result, int& size) 
+{
+    bool primes[1000] = { false };
+
+    size = 0;
+
+    for (int i = 2; i <= a; i++) 
+    {
+        if (a % i == 0 && isPrime(i)) 
+        {
+            primes[i] = true;
+        }
+    }
+    for (int i = 2; i <= b; i++) 
+    {
+        if (b % i == 0 && isPrime(i)) 
+        {
+            primes[i] = true;
+        }
+    }
+    for (int i = 2; i < 1000; i++) 
+    {
+        if (primes[i]) 
+        {
+            result[size++] = i;
+        }
+    }
+}
+
+bool isPerfect(int n) 
+{
+    return sumOfDivisors(n) == n;
+}
+
+void displayPerfectNumbersInInterval(int start, int end) 
+{
+    for (int i = start; i <= end; i++) 
+    {
+        if (isPerfect(i)) 
+        {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+
+void displayFirstNPerfectNumbers(int n) 
+{
     int count = 0;
+
     int p = 2;
-    while (count < n && count < maxSize) {
-        if (isPrime((1LL << p) - 1)) {
-            result[count] = "2^(" + to_string(p) + "-1).(2^" + to_string(p) + "-1)";
-            ++count;
+
+    while (count < n) 
+    {
+        long long mersennePrime = (1LL << p) - 1; // 2^p - 1
+        if (isPrime(mersennePrime)) 
+        {
+            long long perfectNumber = (1LL << (p - 1)) * mersennePrime; // 2^(p-1) * (2^p - 1)
+            cout << perfectNumber << " ";
+            count++;
         }
         p++;
     }
-    return count;
+    cout << endl;
 }
 
-int main()
+void storePerfectNumbersInInterval(int start, int end, int* result, int& size) 
 {
-    long long number = 28;
-    cout << "Sum of divisors (excluding the number itself) of " << number << " is: " << sumOfDivisors(number) << endl;
+    size = 0;
 
-    cout << "Divisors of " << number << ":" << endl;
-    printDivisors(number);
-
-    if (isPerfectNumber(number)) {
-        cout << number << " is a perfect number." << endl;
+    for (int i = start; i <= end; i++) 
+    {
+        if (isPerfect(i))
+        {
+            result[size++] = i;
+        }
     }
-    else {
-        cout << number << " is not a perfect number." << endl;
-    }
+}
 
-    long long start = 1, end = 10000;
-    long long perfectNumbersInRange[10];
-    int count = getPerfectNumbersInRange(start, end, perfectNumbersInRange, 10);
-    cout << "Perfect numbers in range [" << start << ", " << end << "]:" << endl;
-    for (int i = 0; i < count; ++i) {
-        cout << perfectNumbersInRange[i] << " ";
-    }
-    cout << endl;
+void storeFirstNPerfectNumbers(int n, int* result, int& size) 
+{
+    size = 0;
 
-    int n = 4;
-    long long firstNPerfectNumbers[4];
-    count = getFirstNPerfectNumbers(n, firstNPerfectNumbers, 4);
-    cout << "First " << n << " perfect numbers:" << endl;
-    for (int i = 0; i < count; ++i) {
-        cout << firstNPerfectNumbers[i] << " ";
-    }
-    cout << endl;
+    int count = 0;
 
-    string perfectNumberRepresentations[4];
-    count = getPerfectNumbersRepresentation(n, perfectNumberRepresentations, 4);
-    cout << "Representations of the first " << n << " perfect numbers:" << endl;
-    for (int i = 0; i < count; ++i) {
-        cout << perfectNumberRepresentations[i] << endl;
-    }
+    int p = 2;
 
-    return 0;
+    while (count < n) 
+    {
+        long long mersennePrime = (1LL << p) - 1; // 2^p - 1
+        if (isPrime(mersennePrime)) 
+        {
+            long long perfectNumber = (1LL << (p - 1)) * mersennePrime; // 2^(p-1) * (2^p - 1)
+            result[size++] = perfectNumber;
+            count++;
+        }
+        p++;
+    }
+}
+
+void storePerfectNumberRepresentations(int n, string* result) 
+{
+    int count = 0;
+
+    int p = 2;
+
+    while (count < n) 
+    {
+        long long mersennePrime = (1LL << p) - 1; // 2^p - 1
+        if (isPrime(mersennePrime)) 
+        {
+            result[count] = "2^(" + to_string(p - 1) + ").(2^" + to_string(p) + "-1)";
+            count++;
+        }
+        p++;
+    }
 }
