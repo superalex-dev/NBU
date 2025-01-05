@@ -77,7 +77,8 @@ int main() {
 
     string representations[4];
     storePerfectNumberRepresentations(4, representations);
-    cout << "\nRepresentations of first 4 perfect numbers:" << endl;
+    cout << endl;
+    cout << "Representations of first 4 perfect numbers:" << endl;
     for (int i = 0; i < 4; i++)
     {
         cout << representations[i] << endl;
