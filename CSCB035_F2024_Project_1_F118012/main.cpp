@@ -89,5 +89,75 @@ int main() {
     cout << "First 8 perfect numbers: ";
     displayFirstNPerfectNumbers(8);
 
+    cout << endl;
+    cout << "Testing Validations to force invalid outputs";
+    cout << endl;
+
+    cout << endl;
+    cout << "Test 1: Numbers close to 2^63-1";
+    cout << endl;
+
+    unsigned long long bigNum1 = 9223372036854775807ULL;
+    unsigned long long bigNum2 = 9223372036854775806ULL;
+
+    cout << "Testing sumOfDivisors with " << bigNum1 << ": ";
+    sumOfDivisors(bigNum1);
+
+    cout << "Testing intersectionOfDivisors with large numbers: ";
+    intersectionOfDivisors(bigNum1, bigNum2, result, size);
+
+    cout << endl;
+    cout << "Test 2: Numbers close to 8th perfect number";
+    cout << endl;
+
+    unsigned long long perfectNum8 = 2305843008139952128ULL;
+    unsigned long long nearPerfect = perfectNum8 - 1;
+
+    cout << "Testing with 8th perfect number: ";
+    displayDivisors(perfectNum8);
+
+    cout << "Testing with number near 8th perfect: ";
+    displayDivisors(nearPerfect);
+
+    cout << endl;
+    cout << "Test 3: Overflow in divisor calculations";
+    cout << endl;
+    unsigned long long halfMax = 9223372036854775807ULL / 2;
+    cout << "Testing sumOfDivisors with " << halfMax << ": ";
+    sumOfDivisors(halfMax);
+
+    cout << endl;
+    cout << "Test 4: Large intervals";
+    cout << endl;
+    cout << "Testing displayPerfectNumbersInInterval with large range: ";
+    displayPerfectNumbersInInterval(perfectNum8 - 1000, perfectNum8);
+
+    cout << endl;
+    cout << "Test 5: Large N for first N perfect numbers";
+    cout << endl;
+
+    cout << "Testing displayFirstNPerfectNumbers with N = 10: ";
+    displayFirstNPerfectNumbers(10);
+
+    cout << endl;
+    cout << "Test 6: Invalid inputs";
+    cout << endl;
+
+    cout << "Testing with negative number: ";
+    sumOfDivisors(-1);
+
+    cout << "Testing with zero: ";
+    displayDivisors(0);
+
+    cout << "Testing with number larger than 8th perfect number: ";
+    isPerfect(perfectNum8 + 1);
+
+    cout << endl;
+    cout << "Test 7: Edge cases for Mersenne numbers";
+    cout << endl;
+
+    cout << "Testing storePerfectNumberRepresentations with N = 9: ";
+    storePerfectNumberRepresentations(9, representations);
+
     return 0;
 }
