@@ -14,6 +14,7 @@ int sumOfDivisors(int n)
     }
 
     int sum = 0;
+
     for (int i = 1; i <= n / 2; i++)
     {
         if (n % i == 0)
@@ -86,6 +87,7 @@ void intersectionOfDivisors(int a, int b, int* result, int& size)
     }
 
     size = 0;
+
     for (int i = 1; i <= min(a, b) / 2; i++)
     {
         if (a % i == 0 && b % i == 0)
@@ -166,6 +168,7 @@ void displayPerfectNumbersInInterval(int start, int end)
             cout << i << " ";
         }
     }
+
     cout << endl;
 }
 
@@ -184,6 +187,7 @@ void displayFirstNPerfectNumbers(int n)
     while (count < n)
     {
         long long mersennePrime = (1LL << p) - 1; // 2^p - 1
+
         if (isPrime(mersennePrime))
         {
             long long perfectNumber = (1LL << (p - 1)) * mersennePrime; // 2^(p-1) * (2^p - 1)
@@ -192,6 +196,7 @@ void displayFirstNPerfectNumbers(int n)
         }
         p++;
     }
+
     cout << endl;
 }
 
@@ -247,12 +252,14 @@ void storeFirstNPerfectNumbers(int n, int* result, int& size)
     while (count < n)
     {
         long long mersennePrime = (1LL << p) - 1; // 2^p - 1
+
         if (isPrime(mersennePrime))
         {
             long long perfectNumber = (1LL << (p - 1)) * mersennePrime; // 2^(p-1) * (2^p - 1)
             result[size++] = perfectNumber;
             count++;
         }
+
         p++;
     }
 }
@@ -278,11 +285,13 @@ void storePerfectNumberRepresentations(int n, string* result)
     while (count < n)
     {
         long long mersennePrime = (1LL << p) - 1; // 2^p - 1
+
         if (isPrime(mersennePrime))
         {
             result[count] = "2^(" + to_string(p - 1) + ").(2^" + to_string(p) + "-1)";
             count++;
         }
+
         p++;
     }
 }
