@@ -7,16 +7,17 @@ using namespace std;
 
 int sumOfDivisors(int n)
 {
-    if (n <= 0) 
+    if (n <= 0 || n > 9223372036854775807LL)
     {
-        cout << "Error: Input must be a positive integer." << endl;
+        cout << "Error: Input must be a positive integer in the range [1; 2^63-1]." << endl;
         return 0;
     }
 
     int sum = 0;
     for (int i = 1; i <= n / 2; i++)
     {
-        if (n % i == 0) {
+        if (n % i == 0)
+        {
             sum += i;
         }
     }
@@ -25,9 +26,9 @@ int sumOfDivisors(int n)
 
 void displayDivisors(int n)
 {
-    if (n <= 0) 
+    if (n <= 0 || n > 9223372036854775807LL)
     {
-        cout << "Error: Input must be a positive integer." << endl;
+        cout << "Error: Input must be a positive integer in the range [1; 2^63-1]." << endl;
         return;
     }
 
@@ -70,9 +71,16 @@ bool isPrime(int n)
 
 void intersectionOfDivisors(int a, int b, int* result, int& size)
 {
-    if (a <= 0 || b <= 0) 
+    if (a <= 0 || b <= 0 || a > 9223372036854775807LL || b > 9223372036854775807LL)
     {
-        cout << "Error: Inputs must be positive integers." << endl;
+        cout << "Error: Inputs must be positive integers in the range [1; 2^63-1]." << endl;
+        size = 0;
+        return;
+    }
+
+    if (result == nullptr)
+    {
+        cout << "Error: Result array is null." << endl;
         size = 0;
         return;
     }
@@ -89,9 +97,16 @@ void intersectionOfDivisors(int a, int b, int* result, int& size)
 
 void unionOfPrimeDivisors(int a, int b, int* result, int& size)
 {
-    if (a <= 0 || b <= 0) 
+    if (a <= 0 || b <= 0 || a > 9223372036854775807LL || b > 9223372036854775807LL)
     {
-        cout << "Error: Inputs must be positive integers." << endl;
+        cout << "Error: Inputs must be positive integers in the range [1; 2^63-1]." << endl;
+        size = 0;
+        return;
+    }
+
+    if (result == nullptr)
+    {
+        cout << "Error: Result array is null." << endl;
         size = 0;
         return;
     }
@@ -127,9 +142,9 @@ void unionOfPrimeDivisors(int a, int b, int* result, int& size)
 
 bool isPerfect(int n)
 {
-    if (n <= 0) 
+    if (n <= 0 || n > 9223372036854775807LL)
     {
-        cout << "Error: Input must be a positive integer." << endl;
+        cout << "Error: Input must be a positive integer in the range [1; 2^63-1]." << endl;
         return false;
     }
 
@@ -138,9 +153,9 @@ bool isPerfect(int n)
 
 void displayPerfectNumbersInInterval(int start, int end)
 {
-    if (start <= 0 || end <= 0 || start > end) 
+    if (start <= 0 || end <= 0 || start > end || end > 9223372036854775807LL)
     {
-        cout << "Error: Invalid interval." << endl;
+        cout << "Error: Invalid interval. Start and end must be positive integers in the range [1; 2^63-1] and start <= end." << endl;
         return;
     }
 
@@ -156,7 +171,7 @@ void displayPerfectNumbersInInterval(int start, int end)
 
 void displayFirstNPerfectNumbers(int n)
 {
-    if (n <= 0) 
+    if (n <= 0)
     {
         cout << "Error: Input must be a positive integer." << endl;
         return;
@@ -182,9 +197,16 @@ void displayFirstNPerfectNumbers(int n)
 
 void storePerfectNumbersInInterval(int start, int end, int* result, int& size)
 {
-    if (start <= 0 || end <= 0 || start > end) 
+    if (start <= 0 || end <= 0 || start > end || end > 9223372036854775807LL)
     {
-        cout << "Error: Invalid interval." << endl;
+        cout << "Error: Invalid interval. Start and end must be positive integers in the range [1; 2^63-1] and start <= end." << endl;
+        size = 0;
+        return;
+    }
+
+    if (result == nullptr)
+    {
+        cout << "Error: Result array is null." << endl;
         size = 0;
         return;
     }
@@ -202,9 +224,16 @@ void storePerfectNumbersInInterval(int start, int end, int* result, int& size)
 
 void storeFirstNPerfectNumbers(int n, int* result, int& size)
 {
-    if (n <= 0) 
+    if (n <= 0)
     {
         cout << "Error: Input must be a positive integer." << endl;
+        size = 0;
+        return;
+    }
+
+    if (result == nullptr)
+    {
+        cout << "Error: Result array is null." << endl;
         size = 0;
         return;
     }
@@ -230,9 +259,15 @@ void storeFirstNPerfectNumbers(int n, int* result, int& size)
 
 void storePerfectNumberRepresentations(int n, string* result)
 {
-    if (n <= 0) 
+    if (n <= 0)
     {
         cout << "Error: Input must be a positive integer." << endl;
+        return;
+    }
+
+    if (result == nullptr)
+    {
+        cout << "Error: Result array is null." << endl;
         return;
     }
 
