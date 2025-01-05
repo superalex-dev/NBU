@@ -1,11 +1,18 @@
 #include "Functions.h"
 #include <cmath>
 #include <cstring>
+#include <iostream>
 
 using namespace std;
 
 int sumOfDivisors(int n)
 {
+    if (n <= 0) 
+    {
+        cout << "Error: Input must be a positive integer." << endl;
+        return 0;
+    }
+
     int sum = 0;
     for (int i = 1; i <= n / 2; i++)
     {
@@ -18,6 +25,12 @@ int sumOfDivisors(int n)
 
 void displayDivisors(int n)
 {
+    if (n <= 0) 
+    {
+        cout << "Error: Input must be a positive integer." << endl;
+        return;
+    }
+
     for (int i = 1; i <= n / 2; i++)
     {
         if (n % i == 0)
@@ -28,7 +41,7 @@ void displayDivisors(int n)
     cout << endl;
 }
 
-bool isPrime(int n) 
+bool isPrime(int n)
 {
     if (n <= 1)
     {
@@ -45,7 +58,7 @@ bool isPrime(int n)
         return false;
     }
 
-    for (int i = 5; i * i <= n; i += 6) 
+    for (int i = 5; i * i <= n; i += 6)
     {
         if (n % i == 0 || n % (i + 2) == 0)
         {
@@ -57,57 +70,83 @@ bool isPrime(int n)
 
 void intersectionOfDivisors(int a, int b, int* result, int& size)
 {
-    size = 0;
-    for (int i = 1; i <= min(a, b) / 2; i++) 
+    if (a <= 0 || b <= 0) 
     {
-        if (a % i == 0 && b % i == 0) 
+        cout << "Error: Inputs must be positive integers." << endl;
+        size = 0;
+        return;
+    }
+
+    size = 0;
+    for (int i = 1; i <= min(a, b) / 2; i++)
+    {
+        if (a % i == 0 && b % i == 0)
         {
             result[size++] = i;
         }
     }
 }
 
-void unionOfPrimeDivisors(int a, int b, int* result, int& size) 
+void unionOfPrimeDivisors(int a, int b, int* result, int& size)
 {
+    if (a <= 0 || b <= 0) 
+    {
+        cout << "Error: Inputs must be positive integers." << endl;
+        size = 0;
+        return;
+    }
+
     bool primes[1000] = { false };
 
     size = 0;
 
-    for (int i = 2; i <= a; i++) 
+    for (int i = 2; i <= a; i++)
     {
-        if (a % i == 0 && isPrime(i)) 
+        if (a % i == 0 && isPrime(i))
         {
             primes[i] = true;
         }
     }
 
-    for (int i = 2; i <= b; i++) 
+    for (int i = 2; i <= b; i++)
     {
-        if (b % i == 0 && isPrime(i)) 
+        if (b % i == 0 && isPrime(i))
         {
             primes[i] = true;
         }
     }
 
-    for (int i = 2; i < 1000; i++) 
+    for (int i = 2; i < 1000; i++)
     {
-        if (primes[i]) 
+        if (primes[i])
         {
             result[size++] = i;
         }
     }
 }
 
-bool isPerfect(int n) 
+bool isPerfect(int n)
 {
+    if (n <= 0) 
+    {
+        cout << "Error: Input must be a positive integer." << endl;
+        return false;
+    }
+
     return sumOfDivisors(n) == n;
 }
 
-void displayPerfectNumbersInInterval(int start, int end) 
+void displayPerfectNumbersInInterval(int start, int end)
 {
-    for (int i = start; i <= end; i++) 
+    if (start <= 0 || end <= 0 || start > end) 
     {
-        if (isPerfect(i)) 
+        cout << "Error: Invalid interval." << endl;
+        return;
+    }
+
+    for (int i = start; i <= end; i++)
+    {
+        if (isPerfect(i))
         {
             cout << i << " ";
         }
@@ -115,16 +154,22 @@ void displayPerfectNumbersInInterval(int start, int end)
     cout << endl;
 }
 
-void displayFirstNPerfectNumbers(int n) 
+void displayFirstNPerfectNumbers(int n)
 {
+    if (n <= 0) 
+    {
+        cout << "Error: Input must be a positive integer." << endl;
+        return;
+    }
+
     int count = 0;
 
     int p = 2;
 
-    while (count < n) 
+    while (count < n)
     {
         long long mersennePrime = (1LL << p) - 1; // 2^p - 1
-        if (isPrime(mersennePrime)) 
+        if (isPrime(mersennePrime))
         {
             long long perfectNumber = (1LL << (p - 1)) * mersennePrime; // 2^(p-1) * (2^p - 1)
             cout << perfectNumber << " ";
@@ -135,11 +180,18 @@ void displayFirstNPerfectNumbers(int n)
     cout << endl;
 }
 
-void storePerfectNumbersInInterval(int start, int end, int* result, int& size) 
+void storePerfectNumbersInInterval(int start, int end, int* result, int& size)
 {
+    if (start <= 0 || end <= 0 || start > end) 
+    {
+        cout << "Error: Invalid interval." << endl;
+        size = 0;
+        return;
+    }
+
     size = 0;
 
-    for (int i = start; i <= end; i++) 
+    for (int i = start; i <= end; i++)
     {
         if (isPerfect(i))
         {
@@ -148,18 +200,25 @@ void storePerfectNumbersInInterval(int start, int end, int* result, int& size)
     }
 }
 
-void storeFirstNPerfectNumbers(int n, int* result, int& size) 
+void storeFirstNPerfectNumbers(int n, int* result, int& size)
 {
+    if (n <= 0) 
+    {
+        cout << "Error: Input must be a positive integer." << endl;
+        size = 0;
+        return;
+    }
+
     size = 0;
 
     int count = 0;
 
     int p = 2;
 
-    while (count < n) 
+    while (count < n)
     {
         long long mersennePrime = (1LL << p) - 1; // 2^p - 1
-        if (isPrime(mersennePrime)) 
+        if (isPrime(mersennePrime))
         {
             long long perfectNumber = (1LL << (p - 1)) * mersennePrime; // 2^(p-1) * (2^p - 1)
             result[size++] = perfectNumber;
@@ -169,16 +228,22 @@ void storeFirstNPerfectNumbers(int n, int* result, int& size)
     }
 }
 
-void storePerfectNumberRepresentations(int n, string* result) 
+void storePerfectNumberRepresentations(int n, string* result)
 {
+    if (n <= 0) 
+    {
+        cout << "Error: Input must be a positive integer." << endl;
+        return;
+    }
+
     int count = 0;
 
     int p = 2;
 
-    while (count < n) 
+    while (count < n)
     {
         long long mersennePrime = (1LL << p) - 1; // 2^p - 1
-        if (isPrime(mersennePrime)) 
+        if (isPrime(mersennePrime))
         {
             result[count] = "2^(" + to_string(p - 1) + ").(2^" + to_string(p) + "-1)";
             count++;
