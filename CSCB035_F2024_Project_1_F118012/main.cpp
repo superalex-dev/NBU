@@ -30,7 +30,14 @@ int main()
     }
     cout << endl;
 
-    cout << "Is 28 perfect? " << (isPerfect(28) ? "Yes" : "No") << endl;
+    if (isPerfect(28))
+    {
+        cout << "Is 28 perfect? Yes" << endl;
+    }
+    else
+    {
+        cout << "Is 28 perfect? No" << endl;
+    }
 
     cout << "Perfect numbers in interval 1 to 10000: ";
     displayPerfectNumbersInInterval(1, 10000);
@@ -63,8 +70,7 @@ int main()
     }
     cout << endl;
 
-    // Testing validations with invalid inputs
-    cout << "Testing validations with invalid inputs:" << endl;
+    cout << "Invalid inputs:" << endl;
 
     cout << "Sum of divisors of -1: " << sumOfDivisors(-1) << endl;
 
