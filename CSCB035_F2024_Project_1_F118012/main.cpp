@@ -3,7 +3,8 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     unsigned long long result[100];
     int size;
 
