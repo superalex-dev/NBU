@@ -146,7 +146,7 @@ bool isPerfect(int n)
 {
     if (n <= 0 || n > 9223372036854775807LL)
     {
-        cout << "Input must be a positive integer in the range [1; 2^63-1]." << endl;
+        cout << "Input must be a positive int in the range [1; 2^63-1]." << endl;
         return false;
     }
 
@@ -157,7 +157,7 @@ void displayPerfectNumbersInInterval(int start, int end)
 {
     if (start <= 0 || end <= 0 || start > end || end > 9223372036854775807LL)
     {
-        cout << "Invalid interval. Start and end must be positive integers in the range [1; 2^63-1] and start <= end." << endl;
+        cout << "Invalid interval. Start and end must be positive int in the range [1; 2^63-1] and start <= end." << endl;
         return;
     }
 
@@ -176,7 +176,7 @@ void displayFirstNPerfectNumbers(int n)
 {
     if (n <= 0)
     {
-        cout << "Input must be a positive integer." << endl;
+        cout << "Input must be a positive int." << endl;
         return;
     }
 
@@ -204,7 +204,7 @@ void storePerfectNumbersInInterval(int start, int end, int* result, int& size)
 {
     if (start <= 0 || end <= 0 || start > end || end > 9223372036854775807LL)
     {
-        cout << "Invalid interval. Start and end must be positive integers in the range [1; 2^63-1] and start <= end." << endl;
+        cout << "Invalid interval. Start and end must be positive int in the range [1; 2^63-1] and start <= end." << endl;
         size = 0;
         return;
     }
@@ -231,7 +231,7 @@ void storeFirstNPerfectNumbers(int n, int* result, int& size)
 {
     if (n <= 0)
     {
-        cout << "Input must be a positive integer." << endl;
+        cout << "Input must be a positive int." << endl;
         size = 0;
         return;
     }
@@ -268,7 +268,7 @@ void storePerfectNumberRepresentations(int n, string* result)
 {
     if (n <= 0)
     {
-        cout << "Input must be a positive integer." << endl;
+        cout << "Input must be a positive int." << endl;
         return;
     }
 
