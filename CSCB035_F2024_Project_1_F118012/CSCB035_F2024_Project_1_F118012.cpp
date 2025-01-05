@@ -1,7 +1,7 @@
 #include "Functions.h"
+#include <iostream>
 #include <cmath>
 #include <cstring>
-#include <iostream>
 
 using namespace std;
 
