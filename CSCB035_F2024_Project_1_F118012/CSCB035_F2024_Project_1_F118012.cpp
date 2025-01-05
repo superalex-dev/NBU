@@ -80,6 +80,7 @@ void unionOfPrimeDivisors(int a, int b, int* result, int& size)
             primes[i] = true;
         }
     }
+
     for (int i = 2; i <= b; i++) 
     {
         if (b % i == 0 && isPrime(i)) 
@@ -87,6 +88,7 @@ void unionOfPrimeDivisors(int a, int b, int* result, int& size)
             primes[i] = true;
         }
     }
+
     for (int i = 2; i < 1000; i++) 
     {
         if (primes[i]) 
