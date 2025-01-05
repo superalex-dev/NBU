@@ -1,29 +1,31 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#include <iostream>
 #include <string>
 
 using namespace std;
 
-int sumOfDivisors(int n);
 
-void displayDivisors(int n);
+unsigned long long sumOfDivisors(unsigned long long n);
 
-void intersectionOfDivisors(int a, int b, int* result, int& size);
+void displayDivisors(unsigned long long n);
 
-void unionOfPrimeDivisors(int a, int b, int* result, int& size);
+void intersectionOfDivisors(unsigned long long a, unsigned long long b, unsigned long long* result, int& size);
 
-bool isPerfect(int n);
+void unionOfPrimeDivisors(unsigned long long a, unsigned long long b, unsigned long long* result, int& size);
 
-void displayPerfectNumbersInInterval(int start, int end);
+bool isPerfect(unsigned long long n);
+
+void displayPerfectNumbersInInterval(unsigned long long start, unsigned long long end);
 
 void displayFirstNPerfectNumbers(int n);
 
-void storePerfectNumbersInInterval(int start, int end, int* result, int& size);
+void storePerfectNumbersInInterval(unsigned long long start, unsigned long long end, unsigned long long* result, int& size);
 
-void storeFirstNPerfectNumbers(int n, int* result, int& size);
+void storeFirstNPerfectNumbers(int n, unsigned long long* result, int& size);
 
 void storePerfectNumberRepresentations(int n, string* result);
+
+bool isPrime(unsigned long long n);
 
 #endif
