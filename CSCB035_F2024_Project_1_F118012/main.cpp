@@ -71,11 +71,11 @@ int main()
 
     storePerfectNumberRepresentations(4, representations);
 
-    cout << "Representations of first 4 perfect numbers: ";
+    cout << "Representations of first 4 perfect numbers:" << endl;
 
-    for (int i = 0; i < 4; i++) 
+    for (int i = 0; i < 4; i++)
     {
-        cout << representations[i] << " ";
+        cout << representations[i] << endl;
     }
 
     cout << endl;
