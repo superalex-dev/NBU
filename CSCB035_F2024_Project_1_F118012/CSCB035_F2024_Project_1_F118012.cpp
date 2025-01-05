@@ -7,7 +7,7 @@ using namespace std;
 
 int sumOfDivisors(int n)
 {
-    if (n <= 0 || n > 9223372036854775807LL)
+    if (n <= 0 || n > 9223372036854775807)
     {
         cout << "Input must be a positive integer in the range [1; 2^63-1]." << endl;
         return 0;
@@ -27,7 +27,7 @@ int sumOfDivisors(int n)
 
 void displayDivisors(int n)
 {
-    if (n <= 0 || n > 9223372036854775807LL)
+    if (n <= 0 || n > 9223372036854775807)
     {
         cout << "Input must be a positive integer in the range [1; 2^63-1]." << endl;
         return;
@@ -72,7 +72,7 @@ bool isPrime(int n)
 
 void intersectionOfDivisors(int a, int b, int* result, int& size)
 {
-    if (a <= 0 || b <= 0 || a > 9223372036854775807LL || b > 9223372036854775807LL)
+    if (a <= 0 || b <= 0 || a > 9223372036854775807 || b > 9223372036854775807)
     {
         cout << "Inputs must be positive integers in the range [1; 2^63-1]." << endl;
         size = 0;
@@ -99,7 +99,7 @@ void intersectionOfDivisors(int a, int b, int* result, int& size)
 
 void unionOfPrimeDivisors(int a, int b, int* result, int& size)
 {
-    if (a <= 0 || b <= 0 || a > 9223372036854775807LL || b > 9223372036854775807LL)
+    if (a <= 0 || b <= 0 || a > 9223372036854775807 || b > 9223372036854775807)
     {
         cout << "Inputs must be positive integers in the range [1; 2^63-1]." << endl;
         size = 0;
@@ -144,7 +144,7 @@ void unionOfPrimeDivisors(int a, int b, int* result, int& size)
 
 bool isPerfect(int n)
 {
-    if (n <= 0 || n > 9223372036854775807LL)
+    if (n <= 0 || n > 9223372036854775807)
     {
         cout << "Input must be a positive int in the range [1; 2^63-1]." << endl;
         return false;
@@ -155,7 +155,7 @@ bool isPerfect(int n)
 
 void displayPerfectNumbersInInterval(int start, int end)
 {
-    if (start <= 0 || end <= 0 || start > end || end > 9223372036854775807LL)
+    if (start <= 0 || end <= 0 || start > end || end > 9223372036854775807)
     {
         cout << "Invalid interval. Start and end must be positive int in the range [1; 2^63-1] and start <= end." << endl;
         return;
@@ -202,7 +202,7 @@ void displayFirstNPerfectNumbers(int n)
 
 void storePerfectNumbersInInterval(int start, int end, int* result, int& size)
 {
-    if (start <= 0 || end <= 0 || start > end || end > 9223372036854775807LL)
+    if (start <= 0 || end <= 0 || start > end || end > 9223372036854775807)
     {
         cout << "Invalid interval. Start and end must be positive int in the range [1; 2^63-1] and start <= end." << endl;
         size = 0;
