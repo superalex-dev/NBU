@@ -166,20 +166,38 @@ bool isPerfect(unsigned long long n)
     return sumOfDivisors(n) == n;
 }
 
-void displayPerfectNumbersInInterval(unsigned long long start, unsigned long long end) 
+bool isMersennePrime(unsigned long long p)
 {
-    if (start <= 0 || end <= 0 || start > end || end > 2305843008139952128ULL) 
+    unsigned long long mersenne = (1ULL << p) - 1;
+    return isPrime(mersenne);
+}
+
+void displayPerfectNumbersInInterval(unsigned long long start, unsigned long long end)
+{
+    // Check if the interval is valid
+    if (start <= 0 || end <= 0 || start > end || end > 2305843008139952128ULL)
     {
         cout << "Invalid interval. Start and end must be positive integers and start <= end." << endl;
-
         return;
     }
 
-    for (unsigned long long i = start; i <= end; i++) 
+    cout << "Processing interval: [" << start << ", " << end << "]" << endl;
+
+    // Iterate over possible values of p to generate perfect numbers
+    for (unsigned long long p = 2; ; p++)
     {
-        if (isPerfect(i)) 
+        unsigned long long mersenne = (1ULL << p) - 1;
+        if (isMersennePrime(p))
         {
-            cout << i << " ";
+            unsigned long long perfectNumber = (1ULL << (p - 1)) * mersenne;
+            if (perfectNumber > end)
+            {
+                break;
+            }
+            if (perfectNumber >= start)
+            {
+                cout << perfectNumber << " ";
+            }
         }
     }
 
@@ -287,15 +305,15 @@ void storeFirstNPerfectNumbers(int n, unsigned long long* result, int& size)
     }
 }
 
-void storePerfectNumberRepresentations(int n, string* result) 
+void storePerfectNumberRepresentations(int n, string* result)
 {
-    if (n <= 0) 
+    if (n <= 0)
     {
         cout << "Input must be a positive integer." << endl;
         return;
     }
 
-    if (result == nullptr) 
+    if (result == nullptr)
     {
         cout << "Result array is null." << endl;
         return;
@@ -304,15 +322,15 @@ void storePerfectNumberRepresentations(int n, string* result)
     int count = 0;
     int p = 2;
 
-    while (count < n) 
+    while (count < n)
     {
         unsigned long long mersennePrime = (1ULL << p) - 1;
 
-        if (isPrime(mersennePrime)) 
+        if (isPrime(mersennePrime))
         {
             unsigned long long perfectNumber = (1ULL << (p - 1)) * mersennePrime;
 
-            if (perfectNumber <= 2305843008139952128ULL) 
+            if (perfectNumber <= 2305843008139952128ULL)
             {
                 result[count] = "2^(" + to_string(p - 1) + ").(2^" + to_string(p) + "-1)";
                 count++;

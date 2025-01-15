@@ -130,8 +130,11 @@ int main()
     cout << endl;
     cout << "Test 4: Large intervals";
     cout << endl;
+    
     cout << "Testing displayPerfectNumbersInInterval with large range: ";
+    cout << "Range: [" << perfectNum8 - 1000 << ", " << perfectNum8 << "]" << endl;
     displayPerfectNumbersInInterval(perfectNum8 - 1000, perfectNum8);
+    cout << "Finished testing displayPerfectNumbersInInterval" << endl;
 
     cout << endl;
     cout << "Test 5: Large N for first N perfect numbers";
@@ -158,7 +161,15 @@ int main()
     cout << endl;
 
     cout << "Testing storePerfectNumberRepresentations with N = 9: ";
-    storePerfectNumberRepresentations(9, representations);
+    string* dynamicRepresentations = new string[9];
+    storePerfectNumberRepresentations(9, dynamicRepresentations);
+
+    for (int i = 0; i < 9; i++)
+    {
+        cout << dynamicRepresentations[i] << endl;
+    }
+
+    delete[] dynamicRepresentations;
 
     return 0;
 }
