@@ -31,29 +31,54 @@ unsigned long long sumOfDivisors(unsigned long long n)
     return sum;
 }
 
-void displayDivisors(unsigned long long n) 
+void displayDivisors(unsigned long long n)
 {
-    if (n <= 0 || n > 2305843008139952128ULL) 
+    if (n <= 0 || n > 2305843008139952128ULL)
     {
         cout << "Input must be a positive integer in the range [1; 2305843008139952128]." << endl;
         return;
     }
 
-    for (unsigned long long i = 1; i <= sqrt(n); i++) 
+    unsigned long long divisors[1000];
+    int count = 0;
+
+    for (unsigned long long i = 1; i <= sqrt(n); i++)
     {
-        if (n % i == 0) 
+        if (n % i == 0)
         {
             if (i != n)
             {
-                cout << i << " ";
+                divisors[count++] = i;
             }
             if (i * i != n && n / i != n)
             {
-                cout << n / i << " ";
+                divisors[count++] = n / i;
             }
         }
     }
 
+    // Sort divisors arr
+    for (int i = 0; i < count - 1; i++)
+    {
+        for (int j = i + 1; j < count; j++)
+        {
+            if (divisors[i] > divisors[j])
+            {
+                unsigned long long temp = divisors[i];
+                divisors[i] = divisors[j];
+                divisors[j] = temp;
+            }
+        }
+    }
+
+    // Pring with formatting
+    for (int i = 0; i < count; i++)
+    {
+        cout << divisors[i] << " ";
+        if ((i + 1) % 10 == 0) {
+            cout << endl;
+        }
+    }
     cout << endl;
 }
 
