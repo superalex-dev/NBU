@@ -56,29 +56,6 @@ void displayDivisors(unsigned long long n)
             }
         }
     }
-
-    // Sort divisors arr
-    for (int i = 0; i < count - 1; i++)
-    {
-        for (int j = i + 1; j < count; j++)
-        {
-            if (divisors[i] > divisors[j])
-            {
-                unsigned long long temp = divisors[i];
-                divisors[i] = divisors[j];
-                divisors[j] = temp;
-            }
-        }
-    }
-
-    // Pring with formatting
-    for (int i = 0; i < count; i++)
-    {
-        cout << divisors[i] << " ";
-        if ((i + 1) % 10 == 0) {
-            cout << endl;
-        }
-    }
     cout << endl;
 }
 
@@ -220,26 +197,17 @@ void displayPerfectNumbersInInterval(unsigned long long start, unsigned long lon
 {
     if (start <= 0 || end <= 0 || start > end || end > 2305843008139952128ULL)
     {
-        cout << "Invalid interval. Start and end must be positive integers and start <= end." << endl;
+        cout << "Invalid interval. Start and end must be positive integers and start <= end, and end should be lower than 2305843008139952128ULL" << endl;
         return;
     }
 
     cout << "Processing interval: [" << start << ", " << end << "]" << endl;
 
-    for (unsigned long long p = 2; ; p++)
+    for (unsigned long long i = start; i <= end; i++)
     {
-        unsigned long long mersenne = (1ULL << p) - 1;
-        if (isMersennePrime(p))
+        if (isPerfect(i))
         {
-            unsigned long long perfectNumber = (1ULL << (p - 1)) * mersenne;
-            if (perfectNumber > end)
-            {
-                break;
-            }
-            if (perfectNumber >= start)
-            {
-                cout << perfectNumber << " ";
-            }
+            cout << i << " ";
         }
     }
 
