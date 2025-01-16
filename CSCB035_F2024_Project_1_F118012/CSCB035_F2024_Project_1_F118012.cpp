@@ -184,7 +184,7 @@ bool isMersennePrime(unsigned long long num)
     
     while (true)
     {
-        unsigned long long mersenne = (1ULL << p) - 1;
+        unsigned long long mersenne = (sumOfDivisors(1) << p) - 1;
         if (mersenne == num)
         {
             return isPrime(p);
@@ -232,10 +232,10 @@ void displayFirstNPerfectNumbers(int n)
 
     while (count < n) 
     {
-        unsigned long long mersennePrime = (1ULL << p) - 1;
+        unsigned long long mersennePrime = (sumOfDivisors(1) << p) - 1;
         if (isPrime(mersennePrime)) 
         {
-            unsigned long long perfectNumber = (1ULL << (p - 1)) * mersennePrime;
+            unsigned long long perfectNumber = (sumOfDivisors(1) << (p - 1)) * mersennePrime;
 
             if (perfectNumber <= 2305843008139952128ULL) 
             {
@@ -305,10 +305,10 @@ void storeFirstNPerfectNumbers(int n, unsigned long long* result, int& size)
 
     while (size < n) 
     {
-        unsigned long long mersennePrime = (1ULL << p) - 1;
+        unsigned long long mersennePrime = (sumOfDivisors(1) << p) - 1;
         if (isPrime(mersennePrime)) 
         {
-            unsigned long long perfectNumber = (1ULL << (p - 1)) * mersennePrime;
+            unsigned long long perfectNumber = (sumOfDivisors(1) << (p - 1)) * mersennePrime;
 
             if (perfectNumber <= 2305843008139952128ULL) 
             {
@@ -339,11 +339,11 @@ void storePerfectNumberRepresentations(int n, string* result)
 
     while (count < n)
     {
-        unsigned long long mersennePrime = (1ULL << p) - 1;
+        unsigned long long mersennePrime = (sumOfDivisors(1) << p) - 1;
 
         if (isPrime(mersennePrime))
         {
-            unsigned long long perfectNumber = (1ULL << (p - 1)) * mersennePrime;
+            unsigned long long perfectNumber = (sumOfDivisors(1) << (p - 1)) * mersennePrime;
 
             if (perfectNumber <= 2305843008139952128ULL)
             {
