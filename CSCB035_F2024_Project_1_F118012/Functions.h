@@ -28,4 +28,6 @@ void storePerfectNumberRepresentations(int n, string* result);
 
 bool isPrime(unsigned long long n);
 
+bool isMersennePrime(unsigned long long num);
+
 #endif

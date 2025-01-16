@@ -8,48 +8,43 @@ int main()
     unsigned long long result[100];
     int size;
 
-    cout << "Testing with first few perfect numbers:" << endl;
+    // Test sumOfDivisors
+    cout << "Enter a number to test for perfect number properties: ";
+    unsigned long long num;
+    cin >> num;
 
-    cout << endl;
-    cout << "Testing with 6:" << endl;
-    cout << "Sum of divisors: " << sumOfDivisors(6) << endl;
+    cout << "Sum of divisors: " << sumOfDivisors(num) << endl;
     cout << "Divisors: ";
-    displayDivisors(6);
-    if (isPerfect(6))
+    displayDivisors(num);
+    if (isPerfect(num))
     {
-        cout << "Yes" << endl;
-    }
-    else 
-    {
-        cout << "No" << endl;
-    }
-
-    cout << endl;
-    cout << "Testing with 28:" << endl;
-    cout << "Sum of divisors: " << sumOfDivisors(28) << endl;
-    cout << "Divisors: ";
-    displayDivisors(28);
-    if (isPerfect(6))
-    {
-        cout << "Yes" << endl;
+        cout << "Yes, it is a perfect number." << endl;
     }
     else
     {
-        cout << "No" << endl;
+        cout << "No, it is not a perfect number." << endl;
     }
 
     cout << endl;
-    cout << "Testing functions with pairs of numbers:" << endl;
-    cout << "Intersection of divisors of 28 and 496: ";
-    intersectionOfDivisors(28, 496, result, size);
+
+    // Test intersectionOfDivisors
+    cout << "Enter two numbers to test intersection and union of divisors: ";
+    unsigned long long num1, num2;
+    cin >> num1 >> num2;
+
+    cout << "Intersection of divisors of " << num1 << " and " << num2 << ": ";
+    intersectionOfDivisors(num1, num2, result, size);
     for (int i = 0; i < size; i++)
     {
         cout << result[i] << " ";
     }
     cout << endl;
 
-    cout << "Union of prime divisors of 28 and 496: ";
-    unionOfPrimeDivisors(28, 496, result, size);
+    cout << endl;
+
+    // Test unionOfPrimeDivisors
+    cout << "Union of prime divisors of " << num1 << " and " << num2 << ": ";
+    unionOfPrimeDivisors(num1, num2, result, size);
     for (int i = 0; i < size; i++)
     {
         cout << result[i] << " ";
@@ -57,108 +52,88 @@ int main()
     cout << endl;
 
     cout << endl;
-    cout << "Testing interval functions:" << endl;
-    cout << "Perfect numbers in interval [1, 1000]: ";
-    displayPerfectNumbersInInterval(1, 1000);
+
+    // Test displayPerfectNumbersInInterval
+    cout << "Enter the start and end of an interval to find perfect numbers: ";
+    unsigned long long start, end;
+    cin >> start >> end;
+
+    cout << "Perfect numbers in interval [" << start << ", " << end << "]: ";
+    displayPerfectNumbersInInterval(start, end);
 
     cout << endl;
-    cout << "Testing first N perfect numbers:" << endl;
-    cout << "First 4 perfect numbers: ";
-    displayFirstNPerfectNumbers(4);
+
+    // Test displayFirstNPerfectNumbers
+    cout << "Enter the number of perfect numbers to display: ";
+    int n;
+    cin >> n;
+
+    cout << "First " << n << " perfect numbers: ";
+    displayFirstNPerfectNumbers(n);
 
     cout << endl;
-    cout << "Testing first N perfect numbers:" << endl;
-    storeFirstNPerfectNumbers(4, result, size);
-    cout << "First 4 perfect numbers stored in array: ";
+
+    // Test storeFirstNPerfectNumbers
+    storeFirstNPerfectNumbers(n, result, size);
+    cout << "First " << n << " perfect numbers stored in array: ";
     for (int i = 0; i < size; i++)
     {
         cout << result[i] << " ";
     }
     cout << endl;
 
-    string representations[4];
-    storePerfectNumberRepresentations(4, representations);
     cout << endl;
-    cout << "Representations of first 4 perfect numbers:" << endl;
-    for (int i = 0; i < 4; i++)
+
+    // Test storePerfectNumberRepresentations
+    string* representations = new string[n];
+    storePerfectNumberRepresentations(n, representations);
+    cout << "Representations of first " << n << " perfect numbers:" << endl;
+    for (int i = 0; i < n; i++)
     {
         cout << representations[i] << endl;
     }
+    delete[] representations;
 
     cout << endl;
-    cout << "Testing with the 8th perfect number:" << endl;
-    cout << "First 8 perfect numbers: ";
-    displayFirstNPerfectNumbers(8);
 
-    cout << endl;
-    cout << "Testing Validations to force invalid outputs";
-    cout << endl;
-
-    cout << endl;
-    cout << "Test 1: Numbers close to 2^63-1";
-    cout << endl;
-
-    unsigned long long bigNum1 = 9223372036854775807ULL;
-    unsigned long long bigNum2 = 9223372036854775806ULL;
-
-    cout << "Testing sumOfDivisors with " << bigNum1 << ": ";
-    sumOfDivisors(bigNum1);
-
-    cout << "Testing intersectionOfDivisors with large numbers: ";
-    intersectionOfDivisors(bigNum1, bigNum2, result, size);
-
-    unsigned long long perfectNum8 = 2305843008139952128ULL;
-
-    cout << endl;
-    cout << "Test 3: Overflow in divisor calculations";
-    cout << endl;
-    unsigned long long halfMax = 9223372036854775807ULL / 2;
-    cout << "Testing sumOfDivisors with " << halfMax << ": ";
-    sumOfDivisors(halfMax);
-
-    cout << endl;
-    cout << "Test 4: Large intervals";
-    cout << endl;
-    
-    cout << "Testing displayPerfectNumbersInInterval with large range: ";
-    cout << "Range: [" << perfectNum8 - 1000 << ", " << perfectNum8 << "]" << endl;
-    displayPerfectNumbersInInterval(perfectNum8 - 1000, perfectNum8);
-    cout << "Finished testing displayPerfectNumbersInInterval" << endl;
-
-    cout << endl;
-    cout << "Test 5: Large N for first N perfect numbers";
-    cout << endl;
-
-    cout << "Testing displayFirstNPerfectNumbers with N = 10: ";
-    displayFirstNPerfectNumbers(10);
-
-    cout << endl;
-    cout << "Test 6: Invalid inputs";
-    cout << endl;
-
-    cout << "Testing with negative number: ";
-    sumOfDivisors(-1);
-
-    cout << "Testing with zero: ";
-    displayDivisors(0);
-
-    cout << "Testing with number larger than 8th perfect number: ";
-    isPerfect(perfectNum8 + 1);
-
-    cout << endl;
-    cout << "Test 7: Edge cases for Mersenne numbers";
-    cout << endl;
-
-    cout << "Testing storePerfectNumberRepresentations with N = 9: ";
-    string* dynamicRepresentations = new string[9];
-    storePerfectNumberRepresentations(9, dynamicRepresentations);
-
-    for (int i = 0; i < 9; i++)
+    // Test storePerfectNumbersInInterval
+    storePerfectNumbersInInterval(start, end, result, size);
+    cout << "Perfect numbers in interval [" << start << ", " << end << "] stored in array: ";
+    for (int i = 0; i < size; i++)
     {
-        cout << dynamicRepresentations[i] << endl;
+        cout << result[i] << " ";
+    }
+    cout << endl;
+
+    cout << endl;
+
+    // Test isPerfect
+    cout << "Enter a number to check if it is perfect: ";
+    cin >> num;
+    if (isPerfect(num))
+    {
+        cout << "Yes, it is a perfect number." << endl;
+    }
+    else
+    {
+        cout << "No, it is not a perfect number." << endl;
     }
 
-    delete[] dynamicRepresentations;
+    cout << endl;
+
+    // Test isMersennePrime
+    cout << "Enter a number to check if it is a Mersenne prime: ";
+    cin >> num;
+    if (isMersennePrime(num))
+    {
+        cout << "Yes, it is a Mersenne prime." << endl;
+    }
+    else
+    {
+        cout << "No, it is not a Mersenne prime." << endl;
+    }
+
+    cout << endl;
 
     return 0;
 }

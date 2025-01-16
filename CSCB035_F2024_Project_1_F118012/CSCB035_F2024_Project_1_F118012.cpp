@@ -191,15 +191,33 @@ bool isPerfect(unsigned long long n)
     return sumOfDivisors(n) == n;
 }
 
-bool isMersennePrime(unsigned long long p)
+bool isMersennePrime(unsigned long long num)
 {
-    unsigned long long mersenne = (1ULL << p) - 1;
-    return isPrime(mersenne);
+    if (num < 2)
+    {
+        return false;
+    }
+
+    unsigned long long p = 1;
+    
+    while (true)
+    {
+        unsigned long long mersenne = (1ULL << p) - 1;
+        if (mersenne == num)
+        {
+            return isPrime(p);
+        }
+        if (mersenne > num)
+        {
+            return false;
+        }
+        
+        p++;
+    }
 }
 
 void displayPerfectNumbersInInterval(unsigned long long start, unsigned long long end)
 {
-    // Check if the interval is valid
     if (start <= 0 || end <= 0 || start > end || end > 2305843008139952128ULL)
     {
         cout << "Invalid interval. Start and end must be positive integers and start <= end." << endl;
@@ -208,7 +226,6 @@ void displayPerfectNumbersInInterval(unsigned long long start, unsigned long lon
 
     cout << "Processing interval: [" << start << ", " << end << "]" << endl;
 
-    // Iterate over possible values of p to generate perfect numbers
     for (unsigned long long p = 2; ; p++)
     {
         unsigned long long mersenne = (1ULL << p) - 1;
