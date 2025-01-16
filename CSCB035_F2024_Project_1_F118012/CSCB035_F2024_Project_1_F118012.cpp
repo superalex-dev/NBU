@@ -56,6 +56,11 @@ void displayDivisors(unsigned long long n)
             }
         }
     }
+    
+    for (int i = 0; i < count; i++)
+    {
+        cout << divisors[i] << " ";
+    }
     cout << endl;
 }
 
@@ -175,7 +180,7 @@ bool isMersennePrime(unsigned long long num)
         return false;
     }
 
-    unsigned long long p = 1;
+    unsigned long long p = 2;
     
     while (true)
     {
