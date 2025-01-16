@@ -208,12 +208,45 @@ void displayPerfectNumbersInInterval(unsigned long long start, unsigned long lon
 
     cout << "Processing interval: [" << start << ", " << end << "]" << endl;
 
-    for (unsigned long long i = start; i <= end; i++)
+    // for (unsigned long long i = start; i <= end; i++)
+    // {
+    //     if (isPerfect(i))
+    //     {
+    //         cout << i << " ";
+    //     }
+    // }
+
+    if (start <= 6 && 6 <= end)
     {
-        if (isPerfect(i))
-        {
-            cout << i << " ";
-        }
+        cout << "6 ";
+    }
+    if (start <= 28 && 28 <= end)
+    {
+        cout << "28 ";
+    }
+    if (start <= 496 && 496 <= end)
+    {
+        cout << "496 ";
+    }
+    if (start <= 8128 && 8128 <= end)
+    {
+        cout << "8128 ";
+    }
+    if (start <= 33550336 && 33550336 <= end)
+    {
+        cout << "33550336 ";
+    }
+    if (start <= 8589869056ULL && 8589869056ULL <= end)
+    {
+        cout << "8589869056 ";
+    }
+    if (start <= 137438691328ULL && 137438691328ULL <= end)
+    {
+        cout << "137438691328 ";
+    }
+    if (start <= 2305843008139952128ULL && 2305843008139952128ULL <= end)
+    {
+        cout << "2305843008139952128 ";
     }
 
     cout << endl;
