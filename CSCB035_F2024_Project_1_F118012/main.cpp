@@ -107,18 +107,7 @@ int main()
     cout << "Testing intersectionOfDivisors with large numbers: ";
     intersectionOfDivisors(bigNum1, bigNum2, result, size);
 
-    cout << endl;
-    cout << "Test 2: Numbers close to 8th perfect number";
-    cout << endl;
-
     unsigned long long perfectNum8 = 2305843008139952128ULL;
-    unsigned long long nearPerfect = perfectNum8 - 1;
-
-    cout << "Testing with 8th perfect number: ";
-    displayDivisors(perfectNum8);
-
-    cout << "Testing with number near 8th perfect: ";
-    displayDivisors(nearPerfect);
 
     cout << endl;
     cout << "Test 3: Overflow in divisor calculations";
