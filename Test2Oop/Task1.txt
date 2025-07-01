@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+class Mushroom
+{
+public:
+    virtual void cook() const = 0;
+    virtual ~Mushroom() {}
+};
+
+class Manatarka : Mushroom
+{
+protected:
+    bool posinqva;
+public:
+    Manatarka(bool posinqva) : posinqva(posinqva) {}
+};
+
+class ObiknovenaManatarka : Manatarka
+{
+public:
+    ObiknovenaManatarka() : Manatarka(false) {}
+
+    void cook() const override
+    {
+        cout << "Obiknovena manatarka se gotvi." << endl;
+    }
+};
+
+class DyavolskaManatarka : Manatarka
+{
+public:
+    DyavolskaManatarka() : Manatarka(true) {}
+
+    void cook() const override
+    {
+        cout << "Dyavolska manatarka... RIP" << endl;
+    }
+};
+
+
+int main()
+{
+    string mushroom;
+
+    while (cin >> mushroom)
+    {
+        if (mushroom == "XX")
+        {
+            break;
+        }
+        else if (mushroom == "OM")
+        {
+            cout << "Obiknovena manatarka... Mmm :)" << endl;
+        }
+        else if (mushroom == "DM")
+        {
+            cout << "Dyavolska manatarka... RIP" << endl;
+            break;
+        }
+    }
+
+    return 0;
+}

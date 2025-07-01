@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Kurabiika {
+private:
+    int sugarPercentage;
+    string flour;
+protected:
+    int baked;
+public:
+    Kurabiika() : sugarPercentage(0), baked(0), flour("") {}
+    Kurabiika(int sugar, int baked, const string &flour) : sugarPercentage(sugar), baked(baked), flour(flour) {}
+    
+    ~Kurabiika() {}
+
+    void setSugarPercentage(int sugar) { sugarPercentage = sugar; }
+    int getSugarPercentage() const { return sugarPercentage; }
+
+    void setFlour(const string &f) { flour = f; }
+    string getFlour() const { return flour; }
+
+    void setBaked(int b) { baked = b; }
+    int getBaked() const { return baked; }
+
+    void print() const
+    {
+        if (baked == 1)
+        {
+            cout << "Izpechena kurabiika s " << sugarPercentage << "% RDA zahar ot " << flour << " brashno." << endl;
+        }
+        else
+        {
+            cout << "Surova kurabiika s " << sugarPercentage << "% RDA zahar ot " << flour << " brashno." << endl;
+        }
+    }
+};
+
+
+
+int main()
+{
+    int sugar;
+    int baked;
+    
+    string flour;
+    
+    cin >> sugar >> baked >> flour;
+    
+    Kurabiika kurabiika(sugar, baked, flour);
+    
+    kurabiika.print();
+    
+    return 0;
+}
