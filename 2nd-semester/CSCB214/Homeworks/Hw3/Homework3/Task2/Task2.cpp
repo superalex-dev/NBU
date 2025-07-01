@@ -7,7 +7,8 @@ int main()
     int c[n + 1];
     int prenos = 0;
 
-    for (int k = 0; k < n; k++) {
+    for (int k = 0; k < n; k++) 
+    {
         const int b[n] = {1, 0, 0, 0, 0};
         const int a[n] = {9, 9, 9, 9, 9};
         
@@ -21,7 +22,10 @@ int main()
 
     cout << "Сума: ";
     
-    if (c[n] != 0) cout << c[n];
+    if (c[n] != 0)
+    {
+        cout << c[n];
+    }
     
     for (int k = n - 1; k >= 0; k--)
     {
